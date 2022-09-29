@@ -1,3 +1,6 @@
+from view.MenuView import MenuView
+from constants.MenuActionEnum import MenuActionEnum
+
 from services.MovieLibraryService import MovieLibraryService
 from models.MovieModel import MovieModel
 
@@ -16,3 +19,20 @@ movie_library.removeMovie(0)
 movie_library.to_string()
 
 # print(she_hulk.to_string())
+menu_view = MenuView()
+
+
+while True:
+    match menu_view.menu():
+        case MenuActionEnum.ADD_MOVIE.value:
+            movie_library.addMovie(menu_view.add_movie())
+            pass
+        case MenuActionEnum.REMOVE_MOVIE.value:
+            pass
+        case MenuActionEnum.SHOW_LIBRARY.value:
+            movie_library.to_string()
+            pass
+        case MenuActionEnum.QUIT.value:
+            menu_view.quite_option()
+            pass
+    
