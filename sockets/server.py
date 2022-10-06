@@ -2,12 +2,12 @@ from ast import arg
 import socket
 import threading
 
-from sockets.ServerConfig import ServerConfig
+from ServerConfig import ServerConfig
 
 def handle_client(pa_client_socket, pa_client_address):
-    while(True):
-        data = pa_client_socket.recv(1500)
-        print(data)
+    # while(True):
+    data = pa_client_socket.recv(1500)
+    print(data)
 
 
 server_config = ServerConfig()
