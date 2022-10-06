@@ -7,3 +7,4 @@ class SocketOperationEnum(Enum):
     REMOVE_MOVIE = '2'
     SHOW_LIBRARY = '3'
     EXIT = 'q'
+    SHUT_DOWN = 'q'

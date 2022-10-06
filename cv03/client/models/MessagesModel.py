@@ -1,6 +1,4 @@
-from ast import Num
-
-from cv03.server.services.socket.models.MessagesMetaDataModel import MessagesMetaDataModel
+from cv03.server.models.MessagesMetaDataModel import MessagesMetaDataModel
 
 
 class MessagesModel:
@@ -11,5 +9,5 @@ class MessagesModel:
 
 
     @staticmethod
-    def fromJson( pa_socket_data:object):
+    def from_json( pa_socket_data:object):
         return MessagesModel(pa_socket_data['metaData'], pa_socket_data['data'])
