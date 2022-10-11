@@ -1,14 +1,21 @@
 
+import sys
+
+from constants import SocketOperationEnum
+
+from models.MessagesModel import MessagesModel
+
+# setting path
+sys.path.append('/')
+
 import socket
 import threading
 import json
 
-from constants.SocketOperationEnum import SocketOperationEnum
-from models.MessagesModel import MessagesModel
 
 
 class SocketService:
-    def __int__(self, pa_ip_address, pa_port):
+    def __init__(self, pa_ip_address, pa_port):
         self._ip_address = pa_ip_address
         self._pa_port = pa_port
         self.running = True
@@ -16,9 +23,13 @@ class SocketService:
 
     def run_server(self):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        print(self._ip_address)
+        print(self._pa_port)
         sock.bind((self._ip_address, self._pa_port))
         sock.listen(10)
         while self.running:
+
+            print("Server running")
             (clientSock, clientAddr) = sock.accept()
             thread = threading.Thread(target=self._handle_socket, args=(clientSock, clientAddr))
             thread.start()
@@ -28,6 +39,7 @@ class SocketService:
     def _handle_socket(pa_client_socket, pa_client_add):
         while(True):
             data = pa_client_socket.recv(1500)
+
             message = json.loads(data.decode(), object_hook=MessagesModel.from_json)
             print(message)
             if message.metaData.operation == SocketOperationEnum.ADD_MOVIE:
