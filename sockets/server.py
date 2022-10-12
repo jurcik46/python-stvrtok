@@ -15,21 +15,20 @@ def handle_client(pa_client_socket, pa_client_address):
         data = pa_client_socket.recv(1500)
         print(data)
         msg = json.loads(data.decode(), object_hook=MessageModel.from_json)
-        match msg.action:
-            case ActionsEnum.LOGIN:
-                users.append(msg.from_user)
-                print(f"User {msg.from_user} are log in. IP: {pa_client_address[0]}:{pa_client_address[1]} ")
-                continue
-            case ActionsEnum.EXIT:
-                users.remove(msg.from_user)
-                print(f"User {msg.from_user}  loget out. IP: {pa_client_address[0]}:{pa_client_address[1]} ")
-                pa_client_socket.close()
-                return
-            case ActionsEnum.USERS:
-                 msg_to_user = MessageModel("Server","", users, ActionsEnum.USERS)
-                 json_str = json.dumps(msg_to_user.__dict__)
-                 pa_client_socket.send(json_str)
-                 continue
+
+        if msg.action is ActionsEnum.LOGIN.value:
+            users.append(msg.from_user)
+            print(f"User {msg.from_user} are log in. IP: {pa_client_address[0]}:{pa_client_address[1]} ")
+            continue
+        if msg.action is  ActionsEnum.EXIT.value:
+            users.remove(msg.from_user)
+            print(f"User {msg.from_user}  logged out. IP: {pa_client_address[0]}:{pa_client_address[1]} ")
+            pa_client_socket.close()
+            return
+        if msg.action is  ActionsEnum.USERS.value:
+            msg_to_user = MessageModel("Server","", users, ActionsEnum.USERS)
+            json_str = json.dumps(msg_to_user.__dict__)
+            pa_client_socket.send(json_str.encode())
         print(f"Massage {pa_client_address[0]}:{pa_client_address[1]}, from {msg.from_user} to {msg.to_user}, text: {msg.text}")
             
  
