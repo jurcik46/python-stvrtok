@@ -1,7 +1,7 @@
 from Uzivatel import Uzivatel
 print("Hello")
 
-user1 = Uzivatel("Jan", "Jurc", 50) 
+user_31 = Uzivatel("Jan", "Jurddddc", 50) 
 user2 = Uzivatel("Fero", "sdadas", 50) 
 
 user1 = user2
