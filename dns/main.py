@@ -27,3 +27,6 @@ dns_service.response_pretty(reply_bytes, reply_addr)
 
 socket_service.destroy_socket()
 
+# https://cabulous.medium.com/dns-message-how-to-read-query-and-response-message-cfebcb4fe817 usefull
+# https://www.securityartwork.es/wp-content/uploads/2013/02/DNS.jpg   HEADER
+# https://docs.python.org/3/library/struct.html python struct doc
