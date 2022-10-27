@@ -11,7 +11,7 @@ IFACES.show()
 
 
 
-interface = IFACES.dev_from_index(1)
+interface = IFACES.dev_from_index(13)
 sock = conf.L2socket(iface=interface)
 
 cdp = CDPModel()
