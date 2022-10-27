@@ -4,7 +4,7 @@ from TlvsModels.TlvModel import TlvModel
 class DeviceIdTlvModel(TlvModel):
     
     def __init__(self, pa_device_id) -> None:
-        TlvModel.__init__(0x0001)
+        TlvModel.__init__(self,0x0001)
         self.device_id = pa_device_id
     
     def to_byte(self):

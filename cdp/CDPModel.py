@@ -12,7 +12,7 @@ class CDPModel():
         self.tlvs.append(tlvModel)
         
     def to_bytes(self):
-        result_bytes = struct.pack("!2BH", self.version, self.tlvs, self.checksum)
+        result_bytes = struct.pack("!2BH", self.version, self.ttl, self.checksum)
         for tlv in self.tlvs:
             result_bytes += tlv.to_byte()
         return result_bytes

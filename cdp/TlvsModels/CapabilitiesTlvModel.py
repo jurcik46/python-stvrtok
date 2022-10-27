@@ -4,7 +4,7 @@ import struct
 
 class CapabilitiesTlvModel(TlvModel):
     def __init__(self, pa_router=False, pa_switch = False, pa_host=False, pa_phone= False) -> None:
-        TlvModel.__init__(0x0004)
+        TlvModel.__init__(self,0x0004)
         self.router = pa_router
         self.switch = pa_switch
         self.host = pa_host
