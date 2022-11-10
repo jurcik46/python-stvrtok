@@ -1,0 +1,14 @@
+{% extends 'layouts/base_template.html' %}
+{% block title %}
+ Registred Users
+{% endblock %}
+
+{% block body %}
+<ul>
+    {%for user in users%}
+    <li>{{user}}: {{users[user]}} </li>
+{%endfor%}
+</ul>
+{% endblock %}
+
+

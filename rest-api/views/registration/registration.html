@@ -1,0 +1,23 @@
+{% extends 'layouts/base_template.html' %}
+{% block title %}
+ Registration
+{% endblock %}
+
+{% block body %}
+<form action="/registration/user" method="post">
+    <label for="name">Name :</label>
+    <input type="text" id="name" name="name">
+    <fieldset id="group1">
+    <input type="radio" id="school" name="group1" value="school" />
+    <label for="school">School</label>
+
+    <input type="radio" id="work" name="group1" value="work" />
+    <label for="work">Work</label>
+
+</fieldset>
+<input type="submit" value="Submit">
+</form>
+
+{% endblock %}
+
+
