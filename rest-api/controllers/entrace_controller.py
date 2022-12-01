@@ -13,7 +13,7 @@ def login_user():
         return jsonify({"msg": "User password is incorrect"}), 403
     jwt_token=""
     try:
-        jwt_token = jwt_helper.encode_auth_token(user_model["password"])
+        jwt_token = jwt_helper.encode_auth_token(user_model["id"],user_model["email"], user_model["role"])
     except Exception as ex:
         return jsonify({"msg": "User JWT failed", "exception": ex}), 500
     del user_model["password"]
@@ -22,6 +22,7 @@ def login_user():
         "user": user_model,
         "jwt": jwt_token
     }
+    print(result)
     return jsonify(result), 200
 
 

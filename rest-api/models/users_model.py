@@ -3,6 +3,7 @@ USERS = [
         "id": 0,
         "username": "test",
         "password": "test",
+        "role": "admin",
         "email": "test@gmail.com"
     }
 ]
@@ -26,6 +27,7 @@ def create_user(username, password, email):
         "id": len(USERS),
         "username": username,
         "password": password,
+        "role": "user",
         "email": email
         }
     USERS.append(new_user)
