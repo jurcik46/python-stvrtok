@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "4d427f70-95ce-4800-9ffc-73ecbad6474d",
+		"name": "Python-Stvrtok",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Score Endpoint",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "All Users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}{{api_prefix}}/{{api_version}}/users",
+					"host": [
+						"{{domain}}{{api_prefix}}"
+					],
+					"path": [
+						"{{api_version}}",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get profile data",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}{{api_prefix}}/{{api_version}}/users",
+					"host": [
+						"{{domain}}{{api_prefix}}"
+					],
+					"path": [
+						"{{api_version}}",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n       \r\n        \"password\": \"test2\",\r\n        \"email\": \"test2@gmail.com\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}{{api_prefix}}/{{api_version}}/entrance/registration",
+					"host": [
+						"{{domain}}{{api_prefix}}"
+					],
+					"path": [
+						"{{api_version}}",
+						"entrance",
+						"registration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"var token = jsonData['jwt']\r",
+							"pm.environment.set(\"jwt_token\", token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"password\": \"test\",\r\n        \"email\": \"test@gmail.com\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}{{api_prefix}}/{{api_version}}/entrance/login",
+					"host": [
+						"{{domain}}{{api_prefix}}"
+					],
+					"path": [
+						"{{api_version}}",
+						"entrance",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
